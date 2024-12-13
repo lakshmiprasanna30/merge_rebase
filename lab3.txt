@@ -1,0 +1,194 @@
+SQL> select *from dep;
+select *from dep
+             *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select *from dept;
+SQL> /
+select *from dept;
+                 *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select * from dept;
+SQL> /
+select * from dept;
+                  *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select * from Dept;
+SQL> /
+select * from Dept;
+                  *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> select * from Dept;
+
+    DEPTNO DNAME          LOC                                                   
+---------- -------------- -------------                                         
+        10 ACCOUNTING     NEW YORK                                              
+        20 RESEARCH       DALLAS                                                
+        30 SALES          CHICAGO                                               
+        40 OPERATIONS     BOSTON                                                
+
+SQL> set lines 400;
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select * from Dept
+SQL> /
+
+    DEPTNO DNAME          LOC                                                                                                                                                                                                                                                                                                                                                                                   
+---------- -------------- -------------                                                                                                                                                                                                                                                                                                                                                                         
+        10 ACCOUNTING     NEW YORK                                                                                                                                                                                                                                                                                                                                                                              
+        20 RESEARCH       DALLAS                                                                                                                                                                                                                                                                                                                                                                                
+        30 SALES          CHICAGO                                                                                                                                                                                                                                                                                                                                                                               
+        40 OPERATIONS     BOSTON                                                                                                                                                                                                                                                                                                                                                                                
+
+SQL> set lines 400
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> create table student(sno number not null unique,sname varchar2(20) unique,address varchar2(20));
+create table student(sno number not null unique,sname varchar2(20) unique,address varchar2(20))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* create table student3(sno number not null unique,sname varchar2(20) unique,address varchar2(20));
+SQL> /
+create table student3(sno number not null unique,sname varchar2(20) unique,address varchar2(20));
+                                                                                                *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* create table oracle(sno number not null unique,sname varchar2(20) unique,address varchar2(20));
+SQL> /
+create table oracle(sno number not null unique,sname varchar2(20) unique,address varchar2(20));
+                                                                                              *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* create table oracle(sno number not null,sname varchar2(20) unique,address varchar2(20));
+SQL> /
+create table oracle(sno number not null,sname varchar2(20) unique,address varchar2(20));
+                                                                                       *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* create table oracle(sno number not null,sname varchar2(20),address varchar2(20));
+SQL> /
+create table oracle(sno number not null,sname varchar2(20),address varchar2(20));
+                                                                                *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> create table oracle(sno number not null,sname varchar2(20),adress varchar2(20));
+
+Table created.
+
+SQL> insert into oracle(201,'sunny','bapatla');
+insert into oracle(201,'sunny','bapatla')
+                   *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* insert into oraclevalues(201,'sunny','bapatla');
+SQL> /
+insert into oraclevalues(201,'sunny','bapatla');
+                         *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword 
+
+
+SQL> insert into oracle values(201,'sunny','bapatla');
+
+1 row created.
+
+SQL> inser into oracle values(202,'prasanna','kakumanu');
+SP2-0734: unknown command beginning "inser into..." - rest of line ignored.
+SQL> ed
+Wrote file afiedt.buf
+
+  1* insert into oracle values(201,'sunny','bapatla');
+  2  /
+insert into oracle values(201,'sunny','bapatla');
+                                                *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> desc
+Usage: DESCRIBE [schema.]object[@db_link]
+SQL> ed
+Wrote file afiedt.buf
+
+  1* insert into oracle values(201,'sunny','bapatla');
+SQL> /
+insert into oracle values(201,'sunny','bapatla');
+                                                *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> insert into oracle values(201,'sunny','bapatla');
+
+1 row created.
+
+SQL> insert into oracle values(202,'prasanna','kakumanu');
+
+1 row created.
+
+SQL> select * from oracle;
+
+       SNO SNAME                ADRESS                                                                                                                                                                                                                                                                                                                                                                          
+---------- -------------------- --------------------                                                                                                                                                                                                                                                                                                                                                            
+       201 sunny                bapatla                                                                                                                                                                                                                                                                                                                                                                         
+       201 sunny                bapatla                                                                                                                                                                                                                                                                                                                                                                         
+       202 prasanna             kakumanu                                                                                                                                                                                                                                                                                                                                                                        
+
+SQL> insert into oracle values(203,'bobby','returu');
+
+1 row created.
+
+SQL> spool off
